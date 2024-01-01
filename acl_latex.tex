@@ -1,0 +1,133 @@
+% This must be in the first 5 lines to tell arXiv to use pdfLaTeX, which is strongly recommended.
+\pdfoutput=1
+% In particular, the hyperref package requires pdfLaTeX in order to break URLs across lines.
+
+\documentclass[11pt]{article}
+
+% Remove the "review" option to generate the final version.
+\usepackage{acl}
+
+% Standard package includes
+\usepackage{times}
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+
+% For proper rendering and hyphenation of words containing Latin characters (including in bib files)
+\usepackage[T1]{fontenc}
+% For Vietnamese characters
+% \usepackage[T5]{fontenc}
+% See https://www.latex-project.org/help/documentation/encguide.pdf for other character sets
+
+% This assumes your files are encoded as UTF8
+\usepackage[utf8]{inputenc}
+
+% This is not strictly necessary, and may be commented out,
+% but it will improve the layout of the manuscript,
+% and will typically save some space.
+\usepackage{microtype}
+
+% If the title and author information does not fit in the area allocated, uncomment the following
+%
+%\setlength\titlebox{<dim>}
+%
+% and set <dim> to something 5cm or larger.
+
+\title{Trustworthy Bias Measures for Language Models and Word Embeddings}
+
+\author{Juno Prent \\ Wu Wang Yang}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+This study examines the reliability and validity of the Word Embedding Association Test (WEAT) as a measure of gender bias. We employ pre-trained word2vec embeddings in our experiments, as WEAT is specifically designed for static embeddings. The findings indicate that WEAT effectively uncovers gender bias present in word2vec embeddings. Moreover, the results can be replicated using split subdatasets and demonstrate consistency with several other bias measures.
+\end{abstract}
+
+\section{Introduction}
+
+These instructions are for authors submitting papers to *ACL conferences using \LaTeX. They are not self-contained. All authors must follow the general instructions for *ACL proceedings,\footnote{\url{http://acl-org.github.io/ACLPUB/formatting.html}} and this document contains additional instructions for the \LaTeX{} style files.
+
+The templates include the \LaTeX{} source of this document (\texttt{acl.tex}),
+the \LaTeX{} style file used to format it (\texttt{acl.sty}),
+an ACL bibliography style (\texttt{acl\_natbib.bst}),
+an example bibliography (\texttt{custom.bib}),
+and the bibliography for the ACL Anthology (\texttt{anthology.bib}).
+
+\section{Methodology}
+The following methods are used to test the reliability and validity of WEAT.
+
+ 
+\subsection{Reliability}
+To test the reliability, we chose to go with the method of Internal Consistency. Internal consistency reliability is a measure used to assess the consistency and reliability of a test or measurement instrument, such as the WEAT. It examines the extent to which the items or components within the test are measuring the same underlying construct or concept. In this project, we randomly dividing the target and attribute concept lists into four halves and calculating the correlation between the WEAT results obtained from each sub-list. In order to reduce the random chance of obtaining consistent results, we first extend the four original lists to a reasonable length to ensure the results obtained from them are representative. By employing this internal consistency reliability measures, we can determine whether the items within the WEAT are consistently measuring the desired associations between target and attribute concepts. Higher levels of internal consistency provide evidence for the reliability of the test.
+
+\subsection{Validity}
+To test the validity of WEAT, we chose to conduct convergent validity. Convergent validity is a type of validity assessment that examines the degree to which a test or measurement correlates with other measures or indicators that are expected to assess a similar construct or concept. In the context of testing the validity of the WEAT, we employ convergent validity to evaluate whether the WEAT aligns with other measures that assess similar associations between target and attribute concepts. We chose two indicators: Word Analogy Testing and Word Similarity Comparison for comparison.\\
+Word analogy testing is a method used to evaluate the performance of word embeddings or language models in capturing semantic relationships between words. It involves assessing the ability of a model to accurately complete analogical relationships in the form of word analogies. It can also be used to assess gender bias in word embeddings or language models. To evaluate gender bias using word analogy testing, we construct analogy questions that specifically target gender-related associations. For example, we can create analogies like "man is to doctor as woman is to \_\_" or "father is to son as mother is to \_\_". The goal is to examine whether the model's predictions reinforce or reflect gender stereotypes. \\
+In addition, we also conducted a downstream task: semantic textual similarity task (STS) to support the results from aforementioned indicators. STS task is a common benchmark used to assess the ability of natural language processing (NLP) models to measure the semantic similarity between pairs of texts. It involves comparing two pieces of text and assigning a similarity score that represents their degree of semantic similarity. However, we used a modified version of STS depicted in the assignment notebook that comparing similarity scores between three pieces of text. For example, if we have three sentences: A, B, and C in which A and B contain gender information while C is neutral. We compare similarity scores of A and C with B and C. Then the gender bias for that occupation term is the  difference in the similarity averaged over a set of template sentences. Figure \ref{fig:STS} illustrates this: 
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.4\textwidth]{STS.png}
+  \caption{STS}
+  \label{fig:STS}
+\end{figure}
+
+Equation \ref{eq:STS} illustrates the caculation:
+
+\begin{equation}
+\label{eq:STS}
+\begin{split}
+bias_{STS-B(o)} = \frac{1}{T} \sum_{t\in T} similarity(t(o),\\
+t(“man”)) - similarity(t(o),t(“woman”))   
+\end{split}
+\end{equation}
+
+In this formula, $\text{bias}_{\text{STS-B}(\text{o})}$ represents the bias score for the specific object $\text{o}$ in the Semantic Textual Similarity Bias (STS-B) task. $T$ represents the set of text samples, and $t$ represents an individual text sample from that set. $\text{similarity}(t(\text{o}), t(\text{"man"}))$ denotes the similarity score between the text sample $t(\text{o})$ and the word "man", while $\text{similarity}(t(\text{o}), t(\text{"woman"}))$ represents the similarity score between the text sample $t(\text{o})$ and the word "woman".
+
+
+\section{Experiment}
+In this section, we offer comprehensive information regarding the experimental settings employed in this project, aiming to facilitate easy reproduction.
+
+\subsection{Pretrained Word Embeddings}
+For this undertaking, we made the decision to utilize word2vec embeddings that were pretrained specifically on the Google News corpus. This particular model, known as \textit{word2vec-google-news-300}, is a pre-trained word embedding model developed by Google. It has been trained on an extensive collection of Google News articles and encompasses word vectors with a dimensionality of 300. To access this pretrained word2vec modem, we used \textit{downloader} from \textit{Gensim} library which provides direct downloading that can be loaded as a word2vec embedding model using \textit{WEFE.WordEmbeddingModel}.\\
+
+\subsection{WEAT}
+To conduct WEAT on word2vec embeddings, we created four lists of gendered words and associated concepts: male names, female names, family, career. For simplicity reason, WEAT is conducted using an existing python package called \textit{WEFE}. The WEFE library, short for Word Embeddings Fairness Evaluation, is a Python library developed for the evaluation and analysis of fairness in word embeddings. It provides a range of tools and metrics to measure and quantify different aspects of bias and fairness in word embeddings. The reason why we chose WEFE is because it comes with handy functions to assess various types of biases, such as gender bias, racial bias, and other forms of social bias, in word embeddings. \\
+
+\subsection{Word Analogy Testing}
+For Word Analogy Testing, we defined a list of 10 analogies ourselves which can be found in the notebook. The results of it are formed as follows: if the model predicts an analogy as expected then the result is recorded as the index of this sample, otherwise, it is recorded as 0. For example, if the dataset has 4 samples, in the case where the first three samples are correctly predicted and the last sample is predicted wrong, the results will be [1,2,3,0].\\
+
+\subsection{Word Similarity Comparison}
+For Word Similarity Comparison, a list of gendered pairs and ungendered pairs are defined each of which contains 78 pairs. Results are also recorded in the same way as that in Word Analogy Testing. 
+
+\subsection{Semantic Textual Similarity Task}
+For this undertaking, we utilized a pre-existing dataset comprising a total of 276 samples. Each sample consists of three sentences that incorporate either the term "man," "woman," or an occupational descriptor. You can access the dataset through the following link: XX.
+
+\subsection{Evaluation}
+To analyze the outcomes of the aforementioned tests, we utilized the Kappa score as a means to assess the level of agreement between the two evaluations. Cohen's kappa coefficient, also known as the Kappa score, is a statistical measure employed to gauge the concordance between two raters or evaluators categorizing items into distinct categories. It considers the possibility of chance agreement. We employed the following criteria to decipher the score:
+\begin{itemize}
+    \item 0 to 0.20: Indicates slight agreement
+    \item 0.21 to 0.40: Indicates fair agreement
+    \item 0.41 to 0.60: Indicates moderate agreement
+    \item 0.61 to 0.80: Indicates substantial agreement
+    \item 0.81 to 1: Indicates almost perfect agreement
+\end{itemize}
+The computation of Kappa score is done using the \textit{cohen\_kappa\_score} library in \textit{sklearn} package.
+
+\section{Results}
+In this section, we present the findings from all our conducted experiments:
+
+\subsection{WEAT}
+WEAT yielded an effect size of 1.95. The \textit{effect\_size} quantifies the magnitude or strength of the association between the target and attribute concepts in the WEAT. A larger effect size suggests a stronger association. In this case, the effect size implies that the difference between the means of the target word embeddings in the two attribute categories is almost two standard deviations. This suggests a notable distinction between the two sets, indicating a substantial effect or relationship, namely, a relatively strong gender bias.
+
+\subsection{Reliability}
+TO DO
+
+\subsection{Validity}
+By utilizing the Kappa score as an evaluation metric for the two tests, we achieved a score of around 0.76. According to the criteria for interpreting the score, it can be concluded that the results demonstrate a substantial level of agreement. Consequently, this finding suggests that pretrained word2vec embeddings possess gender bias, which aligns with the outcomes of the WEAT. As a result, the validity of the WEAT can be corroborated.
+
+\subsection{Semantic Textual Similarity Task}
+The outcome of the Semantic Textual Similarity Task corroborates the previous findings. The results reveal that more than 67\% of the samples exhibit a bias favoring male concepts. This provides additional evidence supporting the earlier conclusions and reinforces the presence of gender bias within word2vec embeddings.
+
+\end{document}
