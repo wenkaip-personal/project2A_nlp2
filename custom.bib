@@ -1,0 +1,134 @@
+% Use this file for citations not found in the ACL Anthology (contained in "anthology.bib").
+
+@article{weat,
+author = {Aylin Caliskan  and Joanna J. Bryson  and Arvind Narayanan },
+title = {Semantics derived automatically from language corpora contain human-like biases},
+journal = {Science},
+volume = {356},
+number = {6334},
+pages = {183-186},
+year = {2017},
+doi = {10.1126/science.aal4230},
+URL = {https://www.science.org/doi/abs/10.1126/science.aal4230},
+eprint = {https://www.science.org/doi/pdf/10.1126/science.aal4230},
+abstract = {AlphaGo has demonstrated that a machine can learn how to do things that people spend many years of concentrated study learning, and it can rapidly learn how to do them better than any human can. Caliskan et al. now show that machines can learn word associations from written texts and that these associations mirror those learned by humans, as measured by the Implicit Association Test (IAT) (see the Perspective by Greenwald). Why does this matter? Because the IAT has predictive value in uncovering the association between concepts, such as pleasantness and flowers or unpleasantness and insects. It can also tease out attitudes and beliefs—for example, associations between female names and family or male names and career. Such biases may not be expressed explicitly, yet they can prove influential in behavior. Science, this issue p. 183; see also p. 133 Computers can learn which words go together more or less often and can thus mimic human performance on a test of implicit bias. Machine learning is a means to derive artificial intelligence by discovering patterns in existing data. Here, we show that applying machine learning to ordinary human language results in human-like semantic biases. We replicated a spectrum of known biases, as measured by the Implicit Association Test, using a widely used, purely statistical machine-learning model trained on a standard corpus of text from the World Wide Web. Our results indicate that text corpora contain recoverable and accurate imprints of our historic biases, whether morally neutral as toward insects or flowers, problematic as toward race or gender, or even simply veridical, reflecting the status quo distribution of gender with respect to careers or first names. Our methods hold promise for identifying and addressing sources of bias in culture, including technology.}}
+
+@article{word2vec,
+author = {Mikolov, Tomas and Chen, Kai and Corrado, G.s and Dean, Jeffrey},
+year = {2013},
+month = {01},
+pages = {},
+title = {Efficient Estimation of Word Representations in Vector Space},
+volume = {2013},
+journal = {Proceedings of Workshop at ICLR}
+}
+
+@article{sts-b,
+  author       = {Kellie Webster and
+                  Xuezhi Wang and
+                  Ian Tenney and
+                  Alex Beutel and
+                  Emily Pitler and
+                  Ellie Pavlick and
+                  Jilin Chen and
+                  Slav Petrov},
+  title        = {Measuring and Reducing Gendered Correlations in Pre-trained Models},
+  journal      = {CoRR},
+  volume       = {abs/2010.06032},
+  year         = {2020},
+  url          = {https://arxiv.org/abs/2010.06032},
+  eprinttype    = {arXiv},
+  eprint       = {2010.06032},
+  timestamp    = {Tue, 20 Oct 2020 15:08:10 +0200},
+  biburl       = {https://dblp.org/rec/journals/corr/abs-2010-06032.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{norwegian_salmon,
+    title = "Stereotyping {N}orwegian Salmon: An Inventory of Pitfalls in Fairness Benchmark Datasets",
+    author = "Blodgett, Su Lin  and
+      Lopez, Gilsinia  and
+      Olteanu, Alexandra  and
+      Sim, Robert  and
+      Wallach, Hanna",
+    booktitle = "Proceedings of the 59th Annual Meeting of the Association for Computational Linguistics and the 11th International Joint Conference on Natural Language Processing (Volume 1: Long Papers)",
+    month = aug,
+    year = "2021",
+    address = "Online",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2021.acl-long.81",
+    doi = "10.18653/v1/2021.acl-long.81",
+    pages = "1004--1015",
+    abstract = "Auditing NLP systems for computational harms like surfacing stereotypes is an elusive goal. Several recent efforts have focused on benchmark datasets consisting of pairs of contrastive sentences, which are often accompanied by metrics that aggregate an NLP system{'}s behavior on these pairs into measurements of harms. We examine four such benchmarks constructed for two NLP tasks: language modeling and coreference resolution. We apply a measurement modeling lens{---}originating from the social sciences{---}to inventory a range of pitfalls that threaten these benchmarks{'} validity as measurement models for stereotyping. We find that these benchmarks frequently lack clear articulations of what is being measured, and we highlight a range of ambiguities and unstated assumptions that affect how these benchmarks conceptualize and operationalize stereotyping.",
+}
+
+@inproceedings{gonen-goldberg-2019-lipstick,
+    title = "Lipstick on a Pig: {D}ebiasing Methods Cover up Systematic Gender Biases in Word Embeddings But do not Remove Them",
+    author = "Gonen, Hila  and
+      Goldberg, Yoav",
+    booktitle = "Proceedings of the 2019 Conference of the North {A}merican Chapter of the Association for Computational Linguistics: Human Language Technologies, Volume 1 (Long and Short Papers)",
+    month = jun,
+    year = "2019",
+    address = "Minneapolis, Minnesota",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/N19-1061",
+    doi = "10.18653/v1/N19-1061",
+    pages = "609--614",
+    abstract = "Word embeddings are widely used in NLP for a vast range of tasks. It was shown that word embeddings derived from text corpora reflect gender biases in society. This phenomenon is pervasive and consistent across different word embedding models, causing serious concern. Several recent works tackle this problem, and propose methods for significantly reducing this gender bias in word embeddings, demonstrating convincing results. However, we argue that this removal is superficial. While the bias is indeed substantially reduced according to the provided bias definition, the actual effect is mostly hiding the bias, not removing it. The gender bias information is still reflected in the distances between {``}gender-neutralized{''} words in the debiased embeddings, and can be recovered from them. We present a series of experiments to support this claim, for two debiasing methods. We conclude that existing bias removal techniques are insufficient, and should not be trusted for providing gender-neutral modeling.",
+}
+
+@inproceedings{orgad-belinkov-2022-choose,
+    title = "Choose Your Lenses: Flaws in Gender Bias Evaluation",
+    author = "Orgad, Hadas  and
+      Belinkov, Yonatan",
+    booktitle = "Proceedings of the 4th Workshop on Gender Bias in Natural Language Processing (GeBNLP)",
+    month = jul,
+    year = "2022",
+    address = "Seattle, Washington",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2022.gebnlp-1.17",
+    doi = "10.18653/v1/2022.gebnlp-1.17",
+    pages = "151--167",
+    abstract = "Considerable efforts to measure and mitigate gender bias in recent years have led to the introduction of an abundance of tasks, datasets, and metrics used in this vein. In this position paper, we assess the current paradigm of gender bias evaluation and identify several flaws in it. First, we highlight the importance of extrinsic bias metrics that measure how a model{'}s performance on some task is affected by gender, as opposed to intrinsic evaluations of model representations, which are less strongly connected to specific harms to people interacting with systems. We find that only a few extrinsic metrics are measured in most studies, although more can be measured. Second, we find that datasets and metrics are often coupled, and discuss how their coupling hinders the ability to obtain reliable conclusions, and how one may decouple them. We then investigate how the choice of the dataset and its composition, as well as the choice of the metric, affect bias measurement, finding significant variations across each of them. Finally, we propose several guidelines for more reliable gender bias evaluation.",
+}
+
+@inproceedings{ethayarajh-etal-2019-understanding,
+    title = "Understanding Undesirable Word Embedding Associations",
+    author = "Ethayarajh, Kawin  and
+      Duvenaud, David  and
+      Hirst, Graeme",
+    booktitle = "Proceedings of the 57th Annual Meeting of the Association for Computational Linguistics",
+    month = jul,
+    year = "2019",
+    address = "Florence, Italy",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/P19-1166",
+    doi = "10.18653/v1/P19-1166",
+    pages = "1696--1705",
+    abstract = "Word embeddings are often criticized for capturing undesirable word associations such as gender stereotypes. However, methods for measuring and removing such biases remain poorly understood. We show that for any embedding model that implicitly does matrix factorization, debiasing vectors post hoc using subspace projection (Bolukbasi et al., 2016) is, under certain conditions, equivalent to training on an unbiased corpus. We also prove that WEAT, the most common association test for word embeddings, systematically overestimates bias. Given that the subspace projection method is provably effective, we use it to derive a new measure of association called the relational inner product association (RIPA). Experiments with RIPA reveal that, on average, skipgram with negative sampling (SGNS) does not make most words any more gendered than they are in the training corpus. However, for gender-stereotyped words, SGNS actually amplifies the gender association in the corpus.",
+}
+
+@inproceedings{ravfogel-etal-2020-null,
+    title = "Null It Out: Guarding Protected Attributes by Iterative Nullspace Projection",
+    author = "Ravfogel, Shauli  and
+      Elazar, Yanai  and
+      Gonen, Hila  and
+      Twiton, Michael  and
+      Goldberg, Yoav",
+    booktitle = "Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics",
+    month = jul,
+    year = "2020",
+    address = "Online",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2020.acl-main.647",
+    doi = "10.18653/v1/2020.acl-main.647",
+    pages = "7237--7256",
+    abstract = "The ability to control for the kinds of information encoded in neural representation has a variety of use cases, especially in light of the challenge of interpreting these models. We present Iterative Null-space Projection (INLP), a novel method for removing information from neural representations. Our method is based on repeated training of linear classifiers that predict a certain property we aim to remove, followed by projection of the representations on their null-space. By doing so, the classifiers become oblivious to that target property, making it hard to linearly separate the data according to it. While applicable for multiple uses, we evaluate our method on bias and fairness use-cases, and show that our method is able to mitigate bias in word embeddings, as well as to increase fairness in a setting of multi-class classification.",
+}
+
+@inproceedings{ect,
+  title={Attenuating Bias in Word Vectors},
+  author={Sunipa Dev and J. M. Phillips},
+  booktitle={International Conference on Artificial Intelligence and Statistics},
+  year={2019}
+}
